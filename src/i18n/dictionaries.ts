@@ -6,6 +6,7 @@ export const dictionaries = {
   es: {
     nav: {
       services: "Servicios",
+      projects: "Proyectos",
       about: "Nosotros",
       contact: "Contacto",
     },
@@ -52,6 +53,22 @@ export const dictionaries = {
       ],
       visualTagline: "Controlando tu éxito digital",
     },
+    projects: {
+      titlePrefix: "Proyectos",
+      titleHighlight: "Creados",
+      visitSite: "Visitar sitio",
+      previous: "Proyecto anterior",
+      next: "Siguiente proyecto",
+      listLabel: "Lista de proyectos",
+      items: [
+        {
+          id: "revloh",
+          name: "Revloh",
+          description:
+            "Sitio web para Healthy Pet, marca ecuatoriana de productos naturales para el cuidado y bienestar de mascotas.",
+        },
+      ],
+    },
     contact: {
       title: "¿Listo para iniciar?",
       description:
@@ -87,6 +104,7 @@ export const dictionaries = {
   en: {
     nav: {
       services: "Services",
+      projects: "Projects",
       about: "About",
       contact: "Contact",
     },
@@ -131,6 +149,22 @@ export const dictionaries = {
         "Clear communication throughout the project",
       ],
       visualTagline: "Taking control of your digital success",
+    },
+    projects: {
+      titlePrefix: "Projects",
+      titleHighlight: "We Built",
+      visitSite: "Visit website",
+      previous: "Previous project",
+      next: "Next project",
+      listLabel: "Project list",
+      items: [
+        {
+          id: "revloh",
+          name: "Revloh",
+          description:
+            "Website for Healthy Pet, an Ecuadorian brand of natural products for pet care and wellness.",
+        },
+      ],
     },
     contact: {
       title: "Ready to get started?",

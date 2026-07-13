@@ -1,0 +1,141 @@
+.projects {
+  padding: 5rem 2rem;
+  background: var(--section-alt);
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  transition: transform 0.35s ease;
+}
+
+.slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 280px;
+  background: var(--surface);
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(26, 26, 46, 0.1);
+  transition: all 0.3s;
+  border-top: 3px solid var(--primary);
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0, 212, 255, 0.15);
+}
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  margin-bottom: 0.6rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.logo {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 48px;
+  object-fit: contain;
+}
+
+.card h3 {
+  font-size: 1rem;
+  color: var(--heading);
+  margin-bottom: 0.35rem;
+}
+
+.card p {
+  color: var(--text-light);
+  font-size: 0.78rem;
+  line-height: 1.42;
+  flex: 1;
+}
+
+.linkLabel {
+  margin-top: 0.65rem;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.navButton {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--primary);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.navButton:hover {
+  background: var(--primary);
+  color: var(--secondary);
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 212, 255, 0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.dotActive {
+  background: var(--primary);
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .slider {
+    max-width: 100%;
+    gap: 0.5rem;
+  }
+
+  .card {
+    max-width: 240px;
+  }
+}

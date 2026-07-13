@@ -20,6 +20,10 @@ describe("Header", () => {
       "href",
       "#servicios",
     );
+    expect(screen.getByRole("link", { name: "Proyectos" })).toHaveAttribute(
+      "href",
+      "#proyectos",
+    );
     expect(screen.getByRole("link", { name: "Nosotros" })).toHaveAttribute(
       "href",
       "#nosotros",
@@ -37,6 +41,7 @@ describe("Header", () => {
     await user.click(screen.getByRole("button", { name: "Cambiar a inglés" }));
 
     expect(screen.getByRole("link", { name: "Services" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Projects" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "About" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Contact" })).toBeInTheDocument();
   });

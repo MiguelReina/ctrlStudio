@@ -1,11 +1,14 @@
 import type { NextConfig } from "next";
 
-const repoBasePath = "/ctrlStudio";
+const productionBasePath =
+  process.env.NEXT_PUBLIC_BASE_PATH?.replace(/\/$/, "") || "/ctrlStudio";
+
+const isProductionBuild = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: repoBasePath,
-  assetPrefix: repoBasePath,
+  basePath: isProductionBuild ? productionBasePath : "",
+  assetPrefix: isProductionBuild ? productionBasePath : "",
   trailingSlash: true,
   images: {
     unoptimized: true,
