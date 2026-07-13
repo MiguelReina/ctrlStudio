@@ -67,7 +67,10 @@ export const dictionaries = {
       messageLabel: "Mensaje",
       messagePlaceholder: "Cuéntanos sobre tu proyecto...",
       submit: "Enviar Mensaje",
+      submitting: "Enviando...",
       confirmation: "¡Gracias por tu mensaje! Te contactaremos pronto.",
+      error:
+        "No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos directamente por email.",
     },
     footer: {
       rights: "Todos los derechos reservados.",
@@ -144,7 +147,10 @@ export const dictionaries = {
       messageLabel: "Message",
       messagePlaceholder: "Tell us about your project...",
       submit: "Send Message",
+      submitting: "Sending...",
       confirmation: "Thanks for your message! We will get back to you soon.",
+      error:
+        "We could not send your message. Please try again or email us directly.",
     },
     footer: {
       rights: "All rights reserved.",

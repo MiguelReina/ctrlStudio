@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { readContactFormData } from "./helpers";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { readContactFormData, submitContactForm } from "./helpers";
 
 describe("readContactFormData", () => {
   it("reads the field values from a form", () => {
@@ -23,6 +23,44 @@ describe("readContactFormData", () => {
       name: "",
       email: "",
       message: "",
+    });
+  });
+});
+
+describe("submitContactForm", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("submits the form data to FormSubmit", async () => {
+    const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValue({
+      ok: true,
+      json: async () => ({ success: true }),
+    } as Response);
+
+    await submitContactForm({
+      name: "Ana",
+      email: "ana@example.com",
+      message: "Hola",
+    });
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      "https://formsubmit.co/ajax/miguel_rg_esteban@hotmail.com",
+      expect.objectContaining({
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }),
+    );
+
+    const [, requestInit] = fetchSpy.mock.calls[0];
+    expect(JSON.parse(String(requestInit?.body))).toMatchObject({
+      name: "Ana",
+      email: "ana@example.com",
+      message: "Hola",
+      _replyto: "ana@example.com",
     });
   });
 });

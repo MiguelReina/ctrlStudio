@@ -1,6 +1,7 @@
 "use client";
 
 import ContactForm from "@/components/ContactForm";
+import { CONTACT_EMAIL } from "@/config/contact";
 import { useI18n } from "@/i18n/I18nProvider";
 import styles from "./Contact.module.css";
 
@@ -18,7 +19,7 @@ export default function Contact() {
               <strong>📞 {t.contact.phoneLabel}</strong>
               <p>0963169401</p>
               <strong>📧 {t.contact.emailLabel}</strong>
-              <p>miguel_rg_esteban@hotmail.com</p>
+              <p>{CONTACT_EMAIL}</p>
             </div>
           </div>
           <ContactForm />

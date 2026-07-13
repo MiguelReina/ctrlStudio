@@ -4,12 +4,14 @@ import styles from "./CtaButton.module.css";
 type CtaButtonProps = {
   href?: string;
   type?: "button" | "submit";
+  disabled?: boolean;
   children: ReactNode;
 };
 
 export default function CtaButton({
   href,
   type = "button",
+  disabled = false,
   children,
 }: CtaButtonProps) {
   if (href) {
@@ -21,7 +23,7 @@ export default function CtaButton({
   }
 
   return (
-    <button type={type} className={styles.ctaButton}>
+    <button type={type} className={styles.ctaButton} disabled={disabled}>
       {children}
     </button>
   );
