@@ -54,12 +54,15 @@
   justify-content: center;
   min-height: 58px;
   margin-bottom: 0.6rem;
-  padding: 0.5rem;
+  padding: 0.65rem 0.75rem;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--project-logo-bg);
+  border: 1px solid var(--project-logo-border);
+  box-shadow: var(--project-logo-shadow);
 }
 
 .logo {
+  display: block;
   width: auto;
   max-width: 100%;
   height: auto;
