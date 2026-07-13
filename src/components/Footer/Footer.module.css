@@ -1,0 +1,11 @@
+.footer {
+  background: var(--secondary);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  border-top: 2px solid var(--primary);
+}
+
+.footer p {
+  margin: 0.5rem 0;
+}

@@ -1,0 +1,78 @@
+.about {
+  padding: 5rem 2rem;
+  background: var(--bg);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.text h2 {
+  font-size: 2.2rem;
+  color: var(--heading);
+  margin-bottom: 1.5rem;
+}
+
+.text p {
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.9;
+}
+
+.featuresList {
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.featuresList li {
+  padding: 0.8rem 0;
+  padding-left: 2.5rem;
+  position: relative;
+  color: var(--text-light);
+}
+
+.featuresList li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.visual {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+  border-radius: 15px;
+  padding: 3rem;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+}
+
+.logoLarge {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 15px rgba(0, 212, 255, 0.2));
+}
+
+.visualTagline {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}

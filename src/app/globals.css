@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #00d4ff;
+  --secondary: #1a1a2e;
+  --accent: #16213e;
+  --light: #f8f9fa;
+  --dark: #0f3460;
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --section-alt: #f8f9fa;
+  --heading: #1a1a2e;
+  --text-dark: #1a1a2e;
+  --text-light: #666;
+}
+
+[data-theme="dark"] {
+  --bg: #0d0d1f;
+  --surface: #16213e;
+  --section-alt: #101024;
+  --heading: #f0f2f8;
+  --text-dark: #e4e6ee;
+  --text-light: #9aa0b5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background: var(--bg);
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Utilidades de layout compartidas entre secciones */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--heading);
+}
+
+.section-title span {
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+}
