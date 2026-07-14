@@ -32,7 +32,7 @@ describe("submitContactForm", () => {
     vi.restoreAllMocks();
   });
 
-  it("submits the form data to FormSubmit", async () => {
+  it("submits the form data to Web3Forms", async () => {
     const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValue({
       ok: true,
       json: async () => ({ success: true }),
@@ -45,7 +45,7 @@ describe("submitContactForm", () => {
     });
 
     expect(fetchSpy).toHaveBeenCalledWith(
-      "https://formsubmit.co/ajax/miguel_rg_esteban@hotmail.com",
+      "https://api.web3forms.com/submit",
       expect.objectContaining({
         method: "POST",
         headers: {
@@ -60,7 +60,7 @@ describe("submitContactForm", () => {
       name: "Ana",
       email: "ana@example.com",
       message: "Hola",
-      _replyto: "ana@example.com",
+      replyto: "ana@example.com",
     });
   });
 });

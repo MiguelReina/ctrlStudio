@@ -1,6 +1,7 @@
 import {
   CONTACT_EMAIL,
   CONTACT_FORM_ENDPOINT,
+  WEB3FORMS_ACCESS_KEY,
 } from "@/config/contact";
 
 export type ContactFormData = {
@@ -28,13 +29,13 @@ export async function submitContactForm(
       Accept: "application/json",
     },
     body: JSON.stringify({
+      access_key: WEB3FORMS_ACCESS_KEY,
       name: data.name,
       email: data.email,
       message: data.message,
-      _replyto: data.email,
-      _subject: `Nuevo mensaje de ${data.name} - CTRL Studio`,
-      _template: "table",
-      _captcha: "false",
+      replyto: data.email,
+      from_name: "CTRL Studio",
+      subject: `Nuevo mensaje de ${data.name} - CTRL Studio`,
     }),
   });
 
