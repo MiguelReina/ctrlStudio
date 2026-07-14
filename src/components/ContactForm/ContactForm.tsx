@@ -4,7 +4,12 @@ import { FormEvent, useState } from "react";
 import CtaButton from "@/components/CtaButton";
 import { useI18n } from "@/i18n/I18nProvider";
 import styles from "./ContactForm.module.css";
-import { readContactFormData, submitContactForm } from "./helpers";
+import {
+  HONEYPOT_FIELD_NAME,
+  isHoneypotSubmission,
+  readContactFormData,
+  submitContactForm,
+} from "./helpers";
 
 export default function ContactForm() {
   const { t } = useI18n();
@@ -16,10 +21,16 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     try {
+      if (isHoneypotSubmission(form)) {
+        form.reset();
+        return;
+      }
+
       await submitContactForm(readContactFormData(form));
       alert(t.form.confirmation);
       form.reset();
-    } catch {
+    } catch (error) {
+      console.error("Contact form submission failed:", error);
       alert(t.form.error);
     } finally {
       setIsSubmitting(false);
@@ -63,6 +74,14 @@ export default function ContactForm() {
       <CtaButton type="submit" disabled={isSubmitting}>
         {isSubmitting ? t.form.submitting : t.form.submit}
       </CtaButton>
+      <input
+        type="text"
+        name={HONEYPOT_FIELD_NAME}
+        className={styles.honeypot}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+      />
     </form>
   );
 }

@@ -1,3 +1,4 @@
+import emailjs from "@emailjs/browser";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -18,10 +19,9 @@ describe("ContactForm", () => {
   });
 
   it("shows a confirmation and resets the form on submit", async () => {
-    const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValue({
-      ok: true,
-      json: async () => ({ success: true }),
-    } as Response);
+    const sendSpy = vi
+      .spyOn(emailjs, "send")
+      .mockResolvedValue({ status: 200, text: "OK" });
     const alertSpy = vi.spyOn(window, "alert").mockImplementation(() => {});
     const user = userEvent.setup();
     renderWithProviders(<ContactForm />);
@@ -34,17 +34,37 @@ describe("ContactForm", () => {
     );
 
     await waitFor(() => {
-      expect(fetchSpy).toHaveBeenCalledOnce();
+      expect(sendSpy).toHaveBeenCalledOnce();
     });
     expect(alertSpy).toHaveBeenCalledWith(dictionaries.es.form.confirmation);
     expect(screen.getByLabelText("Nombre")).toHaveValue("");
   });
 
+  it("ignores bot submissions from the honeypot field", async () => {
+    const sendSpy = vi
+      .spyOn(emailjs, "send")
+      .mockResolvedValue({ status: 200, text: "OK" });
+    const user = userEvent.setup();
+    const { container } = renderWithProviders(<ContactForm />);
+
+    await user.type(screen.getByLabelText("Nombre"), "Bot");
+    await user.type(screen.getByLabelText("Email"), "bot@example.com");
+    await user.type(screen.getByLabelText("Mensaje"), "Spam");
+
+    const honeypot = container.querySelector(
+      'input[name="company"]',
+    ) as HTMLInputElement;
+    honeypot.value = "Acme Inc";
+
+    await user.click(
+      screen.getByRole("button", { name: dictionaries.es.form.submit }),
+    );
+
+    expect(sendSpy).not.toHaveBeenCalled();
+  });
+
   it("shows an error when submission fails", async () => {
-    vi.spyOn(globalThis, "fetch").mockResolvedValue({
-      ok: false,
-      status: 500,
-    } as Response);
+    vi.spyOn(emailjs, "send").mockRejectedValue(new Error("send failed"));
     const alertSpy = vi.spyOn(window, "alert").mockImplementation(() => {});
     const user = userEvent.setup();
     renderWithProviders(<ContactForm />);
