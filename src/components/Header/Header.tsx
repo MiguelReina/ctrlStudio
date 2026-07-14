@@ -1,13 +1,14 @@
 "use client";
 
-import LanguageToggle from "@/components/LanguageToggle";
+import { useState } from "react";
 import Logo from "@/components/Logo";
-import ThemeToggle from "@/components/ThemeToggle";
+import SettingsMenu from "@/components/SettingsMenu";
 import { useI18n } from "@/i18n/I18nProvider";
 import styles from "./Header.module.css";
 
 export default function Header() {
   const { t } = useI18n();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
     { href: "#servicios", label: t.nav.services },
@@ -23,18 +24,34 @@ export default function Header() {
           <Logo className={styles.logoIcon} />
           <span className={styles.logoText}>CTRL STUDIO</span>
         </a>
-        <ul className={styles.navList}>
+        <button
+          type="button"
+          className={styles.burger}
+          aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span className={styles.burgerBar} />
+          <span className={styles.burgerBar} />
+          <span className={styles.burgerBar} />
+        </button>
+        <ul
+          className={`${styles.navList} ${menuOpen ? styles.navListOpen : ""}`}
+        >
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className={styles.navLink}>
+              <a
+                href={link.href}
+                className={styles.navLink}
+                onClick={() => setMenuOpen(false)}
+              >
                 {link.label}
               </a>
             </li>
           ))}
         </ul>
         <div className={styles.controls}>
-          <LanguageToggle />
-          <ThemeToggle />
+          <SettingsMenu />
         </div>
       </nav>
     </header>

@@ -70,9 +70,69 @@
   gap: 0.6rem;
 }
 
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.burgerBar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 2px;
+}
+
 @media (max-width: 768px) {
+  .nav {
+    padding: 0 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .logoContainer {
+    order: 1;
+  }
+
+  .controls {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .burger {
+    display: flex;
+    order: 3;
+  }
+
   .navList {
-    gap: 1rem;
-    font-size: 0.9rem;
+    order: 4;
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .navListOpen {
+    max-height: 320px;
+    margin-top: 0.75rem;
+  }
+
+  .navList li {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navLink {
+    display: block;
+    padding: 0.9rem 0.25rem;
   }
 }

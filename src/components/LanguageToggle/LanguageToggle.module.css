@@ -2,9 +2,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
   border-radius: 50px;
   padding: 0.4rem 0.9rem;
   font-size: 0.9rem;
@@ -14,6 +14,6 @@
 }
 
 .toggle:hover {
-  border-color: var(--primary);
-  color: var(--primary);
+  background: var(--primary);
+  color: white;
 }

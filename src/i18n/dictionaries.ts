@@ -9,6 +9,8 @@ export const dictionaries = {
       projects: "Proyectos",
       about: "Nosotros",
       contact: "Contacto",
+      openMenu: "Abrir menú",
+      closeMenu: "Cerrar menú",
     },
     hero: {
       tagline: "Tu Visión Digital, Nuestro Código en Movimiento",
@@ -100,6 +102,13 @@ export const dictionaries = {
       toDark: "Activar modo oscuro",
       toLight: "Activar modo claro",
     },
+    settings: {
+      open: "Abrir configuración",
+      close: "Cerrar configuración",
+      title: "Configuración",
+      language: "Idioma",
+      theme: "Tema",
+    },
   },
   en: {
     nav: {
@@ -107,6 +116,8 @@ export const dictionaries = {
       projects: "Projects",
       about: "About",
       contact: "Contact",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
     },
     hero: {
       tagline: "Your Digital Vision, Our Code in Motion",
@@ -196,6 +207,13 @@ export const dictionaries = {
     theme: {
       toDark: "Enable dark mode",
       toLight: "Enable light mode",
+    },
+    settings: {
+      open: "Open settings",
+      close: "Close settings",
+      title: "Settings",
+      language: "Language",
+      theme: "Theme",
     },
   },
 } as const;

@@ -38,6 +38,7 @@ describe("Header", () => {
     const user = userEvent.setup();
     renderWithProviders(<Header />);
 
+    await user.click(screen.getByRole("button", { name: "Abrir configuración" }));
     await user.click(screen.getByRole("button", { name: "Cambiar a inglés" }));
 
     expect(screen.getByRole("link", { name: "Services" })).toBeInTheDocument();
